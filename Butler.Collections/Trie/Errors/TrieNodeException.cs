@@ -1,13 +1,17 @@
-﻿namespace Butler.Collections.Trie.Errors;
+﻿using Butler.Collections.Trie.Node;
+
+namespace Butler.Collections.Trie.Errors;
 /// <summary>
-/// Represents a <see cref="ITrieNode"/> exception.
+/// Represents a <see cref="ITrieNode{TKey, TValue}"/> exception.
 /// </summary>
-public abstract class TrieNodeException : Exception
+/// <typeparam name="TValue"><inheritdoc cref="ITrieNode{TValue, TKey}" path="/typeparam[@name='TValue']"/></typeparam>
+/// <typeparam name="TKey"><inheritdoc cref="ITrieNode{TValue, TKey}" path="/typeparam[@name='TKey']"/></typeparam>
+public abstract class TrieNodeException<TValue, TKey> : Exception
 {
     /// <summary>
     /// The context in which this exception occured.
     /// </summary>
-    ITrieNode Context { get; init; } = default!;
+    public ITrieNode<TValue, TKey> Context { get; init; } = default!;
     /// <inheritdoc/>
     public TrieNodeException()
     {
