@@ -7,7 +7,7 @@ namespace Butler.Collections.Trie.Node;
 /// <typeparam name="TValue">Represents the value in this node.</typeparam>
 /// <typeparam name="TKey">Represents the key the node uses.</typeparam>
 /// <seealso cref="ITrie{TValue, TKey}"/>
-/// <seealso cref="ITrieNodeHandler{TValue, TKey}"/>
+/// <seealso cref="ITrieNodeHandler{TNode, TValue, TKey}"/>
 public interface ITrieNode<TValue, TKey> : IReadOnlyCollection<ITrieNode<TValue, TKey>>
 {
     /// <summary>
@@ -34,25 +34,4 @@ public interface ITrieNode<TValue, TKey> : IReadOnlyCollection<ITrieNode<TValue,
     /// <returns><see langword="true"/> if it is found in the current node, <see langword="false"/> if it is not.</returns>
     /// <exception cref="NotSupportedKey{TValue, TKey}">Thrown when the key is not supported in the current node.</exception>
     bool Contains(TKey key);
-    /// <summary>
-    /// Determins if the <paramref name="key"/> is supported by this node.
-    /// </summary>
-    /// <param name="key">The character to check.</param>
-    /// <returns><see langword="true"/> if it is supported, <see langword="false"/> if it is not supported.</returns>
-    bool IsSupported(TKey key);
-    // TODO: Move to the handler? 
-    /// <summary>
-    /// Adds a new child to the current node.
-    /// </summary>
-    /// <param name="key">The new child to add.</param>
-    /// <exception cref="NotSupportedKey{TValue, TKey}">Thrown when the key is not supported in the current node.</exception>
-    void Add(TKey key);
-    // TODO: Move to the handler? 
-    /// <summary>
-    /// Removes the given child.
-    /// </summary>
-    /// <param name="key">The child to remove.</param>
-    /// <returns><see langword="true"/> if it was able to remove the value, <see langword="false"/> if it could not remove the value.</returns>
-    /// <exception cref="NotSupportedKey{TValue, TKey}">Thrown when the key is not supported in the current node.</exception>
-    bool Remove(TKey key);
 }
