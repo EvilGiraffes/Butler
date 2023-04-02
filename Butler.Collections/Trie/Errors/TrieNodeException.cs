@@ -8,10 +8,6 @@ namespace Butler.Collections.Trie.Errors;
 /// <typeparam name="TKey"><inheritdoc cref="ITrieNode{TValue, TKey}" path="/typeparam[@name='TKey']"/></typeparam>
 public abstract class TrieNodeException<TValue, TKey> : Exception
 {
-    /// <summary>
-    /// The context in which this exception occured.
-    /// </summary>
-    public ITrieNode<TValue, TKey> Context { get; init; } = default!;
     /// <inheritdoc/>
     public TrieNodeException()
     {

@@ -49,8 +49,8 @@ public interface ITrieNodeHandler<TNode, TValue, TKey>
     /// <summary>
     /// Determins if the <paramref name="key"/> is supported by <typeparamref name="TNode"/>.
     /// </summary>
-    /// <param name="key">The character to check.</param>
-    /// <returns><see langword="true"/> if it is supported, <see langword="false"/> if it is not supported.</returns>
+    /// <param name="key"><inheritdoc cref="ITrieNode{TValue, TKey}.IsSupported(TKey)" path="/param[@name='key']"/></param>
+    /// <returns><inheritdoc cref="ITrieNode{TValue, TKey}.IsSupported(TKey)" path="/returns"/></returns>
     bool IsSupported(TKey key);
     /// <summary>
     /// Recalls the node when deleted.
