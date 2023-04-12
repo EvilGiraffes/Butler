@@ -2,9 +2,7 @@
 /// <summary>
 /// Represents an exception when the node can not be found.
 /// </summary>
-/// <typeparam name="TValue"><inheritdoc cref="InvalidKeyException{TValue, TKey}" path="/typeparam[@name='TValue']"/></typeparam>
-/// <typeparam name="TKey"><inheritdoc cref="InvalidKeyException{TKey, TValue}" path="/typeparam[@name='TKey']"/></typeparam>
-public class NodeNotFound<TValue, TKey> : InvalidKeyException<TValue, TKey>
+public class NodeNotFound : Exception
 {
     /// <inheritdoc/>
     public NodeNotFound()

@@ -35,7 +35,7 @@ public interface ITrieNodeHandler<TNode, TValue, TKey>
     /// </summary>
     /// <param name="node">The node to add the child to.</param>
     /// <param name="key">The new child to add.</param>
-    /// <exception cref="NotSupportedKey{TValue, TKey}">Thrown when the key is not supported in the current node.</exception>
+    /// <exception cref="NotSupportedKey{TKey}">Thrown when the key is not supported in the current node.</exception>
     void AddChild(TNode node, TKey key);
     /// <summary>
     /// Pops the given child from <paramref name="node"/>.
@@ -43,8 +43,8 @@ public interface ITrieNodeHandler<TNode, TValue, TKey>
     /// <param name="node">The node to pop the child from.</param>
     /// <param name="key">The child to pop.</param>
     /// <returns>The node it removed from the <paramref name="node"/>.</returns>
-    /// <exception cref="NodeNotFound{TValue, TKey}">Thrown when the node in <paramref name="node"/> with the given <paramref name="key"/> could not be found.</exception>
-    /// <exception cref="NotSupportedKey{TValue, TKey}">Thrown when the key is not supported in the current node.</exception>
+    /// <exception cref="NodeNotFound">Thrown when the node in <paramref name="node"/> with the given <paramref name="key"/> could not be found.</exception>
+    /// <exception cref="NotSupportedKey{TKey}">Thrown when the key is not supported in the current node.</exception>
     TNode PopChild(TNode node, TKey key);
     /// <summary>
     /// Determins if the <paramref name="key"/> is supported by <typeparamref name="TNode"/>.

@@ -15,7 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Butler.Collections", "Butle
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Butler.Tests.Collections", "Butler.Tests.Collections\Butler.Tests.Collections.csproj", "{D0128623-4841-4E5B-BFDA-21E79DA50665}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Butler.Internals.Tests", "Butler.Internals.Tests\Butler.Internals.Tests.csproj", "{387923D0-0351-41F9-834B-12EFADFDD661}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Butler.Internals.Tests", "Butler.Internals.Tests\Butler.Internals.Tests.csproj", "{387923D0-0351-41F9-834B-12EFADFDD661}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Butler.Internals.Generators.Tests", "Butler.Internals.Generators.Tests\Butler.Internals.Generators.Tests.csproj", "{48323C36-931A-4F58-861A-784E32868BF8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,6 +37,10 @@ Global
 		{387923D0-0351-41F9-834B-12EFADFDD661}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{387923D0-0351-41F9-834B-12EFADFDD661}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{387923D0-0351-41F9-834B-12EFADFDD661}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48323C36-931A-4F58-861A-784E32868BF8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48323C36-931A-4F58-861A-784E32868BF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48323C36-931A-4F58-861A-784E32868BF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48323C36-931A-4F58-861A-784E32868BF8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

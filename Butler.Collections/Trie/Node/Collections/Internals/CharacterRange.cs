@@ -1,23 +1,23 @@
-﻿namespace Butler.Collections.Trie.Node.Policies.Internals;
+﻿namespace Butler.Collections.Trie.Node.Collections.Internals;
 /// <summary>
-/// The range the characters can be inbetween.
+/// Represents a range of <see cref="char"/>.
 /// </summary>
 readonly struct CharacterRange
 {
     /// <summary>
-    /// The inclusive lowerbound of the range.
+    /// The lower most character.
     /// </summary>
     internal char LowerBound { get; init; }
     /// <summary>
-    /// The inclusvie upperbound of the range.
+    /// The uppermost character.
     /// </summary>
     internal char UpperBound { get; init; }
     /// <summary>
-    /// Checks if the <paramref name="value"/> is in range of this <see cref="CharacterRange"/>.
+    /// Verifies if the <paramref name="value"/> is in the range of this <see cref="CharacterRange"/>.
     /// </summary>
     /// <param name="value">The value to check if is in range.</param>
     /// <returns><see langword="true"/> if it is in range, <see langword="false"/> if not.</returns>
     internal bool InRange(char value)
-        => value <= UpperBound
-        || value >= LowerBound;
+        => value >= LowerBound
+        && value <= UpperBound;
 }

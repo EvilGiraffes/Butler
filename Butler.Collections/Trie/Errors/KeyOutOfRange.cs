@@ -2,8 +2,16 @@
 /// <summary>
 /// Represents an exception thrown when the key is out of range.
 /// </summary>
-public class KeyOutOfRange<TValue, TKey> : InvalidKeyException<TValue, TKey>
+public class KeyOutOfRange<TKey> : KeyException<TKey>
 {
+    /// <summary>
+    /// The range it should be within.
+    /// </summary>
+    public Range Range { get; init; }
+    /// <summary>
+    /// The Index it calculated to.
+    /// </summary>
+    public Index Calculated { get; init; }
     /// <inheritdoc/>
     public KeyOutOfRange()
     {
