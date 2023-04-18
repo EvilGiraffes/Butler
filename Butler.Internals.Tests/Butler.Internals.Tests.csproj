@@ -10,14 +10,6 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<None Include="DataHelper\NumberedParamBuilders.Generated.cs">
-			<DesignTime>True</DesignTime>
-			<AutoGen>True</AutoGen>
-			<DependentUpon>NumberedParamBuilders.tt</DependentUpon>
-		</None>
-	</ItemGroup>
-
-	<ItemGroup>
 		<PackageReference Include="FluentAssertions" Version="6.10.0" />
 		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.5.0" />
 		<PackageReference Include="Moq" Version="4.18.4" />
@@ -33,28 +25,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\Butler.Internals.Generators.Tests\Butler.Internals.Generators.Tests.csproj"
-						  OutputItemType="Analyzer"
-						  ReferenceOutputAssembly="false"/>
-	</ItemGroup>
-
-	<ItemGroup>
-		<None Update="DataHelper\NumberedParamBuilders.tt">
-			<Generator>TextTemplatingFileGenerator</Generator>
-			<LastGenOutput>NumberedParamBuilders.Generated.cs</LastGenOutput>
-		</None>
+		<ProjectReference Include="..\Butler.Internals.Generators.Tests\Butler.Internals.Generators.Tests.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<Compile Update="DataHelper\NumberedParamBuilders.Generated.cs">
-			<DesignTime>True</DesignTime>
-			<AutoGen>True</AutoGen>
-			<DependentUpon>NumberedParamBuilders.tt</DependentUpon>
-		</Compile>
 	</ItemGroup>
 
 </Project>

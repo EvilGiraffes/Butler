@@ -1,9 +1,8 @@
-﻿namespace Butler.Internals.Generators.Tests.Mappers
+﻿namespace Butler.Internals.Generators.Tests.Mappers;
+
+interface IStringMapper<T>
 {
-    interface IStringMapper<T>
-    {
-        T Start { get; }
-        T End { get; }
-        string this[T key] { get; }
-    }
+    T Start { get; }
+    T End { get; }
+    string this[T key] { get; }
 }

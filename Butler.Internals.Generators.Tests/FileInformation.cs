@@ -1,8 +1,7 @@
-﻿namespace Butler.Internals.Generators.Tests
+﻿namespace Butler.Internals.Generators.Tests;
+
+static class FileInformation
 {
-    static class FileInformation
-    {
-        public static string CSharpFileEnding
-            => ".Generated.cs";
-    }
+    public static string CSharpFileEnding
+        => ".Generated.cs";
 }

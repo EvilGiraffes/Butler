@@ -1,7 +1,6 @@
-﻿namespace Butler.Internals.Generators.Tests.CountFormatters
+﻿namespace Butler.Internals.Generators.Tests.CountFormatters;
+
+interface ICountFormatter
 {
-    interface ICountFormatter
-    {
-        string GetFormatted(int count);
-    }
+    string GetFormatted(int count);
 }
