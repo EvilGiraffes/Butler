@@ -24,4 +24,9 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Butler.Internals.Generators\Butler.Internals.Generators.csproj" />
+    <ProjectReference Include="..\Butler.Internals.Tests\Butler.Internals.Tests.csproj" />
+  </ItemGroup>
+
 </Project>
