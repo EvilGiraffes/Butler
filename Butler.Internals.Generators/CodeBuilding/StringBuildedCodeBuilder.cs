@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 
 using Butler.Internals.Generators.CodeBuilding.IndentHandlers;
@@ -12,8 +13,8 @@ namespace Butler.Internals.Generators.CodeBuilding;
 public sealed class StringBuildedCodeBuilder : ICodeBuilder
 {
     /// <inheritdoc/>
-    public int MaxCapacity
-        => builder.MaxCapacity;
+    public int Count
+        => builder.Length;
     readonly IIndentHandler indentHandler;
     readonly StringBuilder builder;
     /// <summary>
@@ -42,6 +43,8 @@ public sealed class StringBuildedCodeBuilder : ICodeBuilder
     /// <inheritdoc/>
     public ICodeBuilder Append(string text)
     {
+        if (string.IsNullOrEmpty(text))
+            return this;
         indentHandler.AppendIndent(builder);
         builder.Append(text);
         return this;
@@ -49,28 +52,47 @@ public sealed class StringBuildedCodeBuilder : ICodeBuilder
     /// <inheritdoc/>
     public ICodeBuilder Append<T>(T value)
     {
+        if (value is null)
+            return this;
         indentHandler.AppendIndent(builder);
         builder.Append(value);
+        return this;
+    }
+    /// <inheritdoc/>
+    public ICodeBuilder Append(char value, int count)
+    {
+        if (count < 1)
+            return this;
+        indentHandler.AppendIndent(builder);
+        builder.Append(value, count);
         return this;
     }
     /// <inheritdoc/>
     public ICodeBuilder AppendFormat(string format, object value)
         => AppendFormat(null, format, value);
     /// <inheritdoc/>
-    public ICodeBuilder AppendFormat(string format, params object[] values)
-        => AppendFormat(null, format, values);
-    /// <inheritdoc/>
     public ICodeBuilder AppendFormat(IFormatProvider? provider, string format, object value)
     {
+        if (string.IsNullOrEmpty(format) ||
+            value is null)
+            return this;
+        IFormatProvider ensuredProvider = EnsureFormatProvider(provider);
         indentHandler.AppendIndent(builder);
-        builder.AppendFormat(provider, format, value);
+        builder.AppendFormat(ensuredProvider, format, value);
         return this;
     }
     /// <inheritdoc/>
+    public ICodeBuilder AppendFormat(string format, params object[] values)
+        => AppendFormat(null, format, values);
+    /// <inheritdoc/>
     public ICodeBuilder AppendFormat(IFormatProvider? provider, string format, params object[] values)
     {
+        if (string.IsNullOrEmpty(format) ||
+            values.Length < 1)
+            return this;
+        IFormatProvider ensuredProvider = EnsureFormatProvider(provider);
         indentHandler.AppendIndent(builder);
-        builder.AppendFormat(provider, format, values);
+        builder.AppendFormat(ensuredProvider, format, values);
         return this;
     }
     /// <inheritdoc/>
@@ -87,13 +109,14 @@ public sealed class StringBuildedCodeBuilder : ICodeBuilder
     /// <inheritdoc/>
     public ICodeBuilder AppendLine()
     {
-        indentHandler.AppendIndent(builder);
         builder.AppendLine();
         return this;
     }
     /// <inheritdoc/>
     public ICodeBuilder AppendLine(string text)
     {
+        if (string.IsNullOrEmpty(text))
+            return AppendLine();
         indentHandler.AppendIndent(builder);
         builder.AppendLine(text);
         return this;
@@ -101,14 +124,16 @@ public sealed class StringBuildedCodeBuilder : ICodeBuilder
     /// <inheritdoc/>
     public ICodeBuilder AppendLine<T>(T value)
     {
+        string? valueString = value?.ToString();
+        if (string.IsNullOrEmpty(valueString))
+            return AppendLine();
         indentHandler.AppendIndent(builder);
-        builder.AppendLine(value?.ToString());
+        builder.AppendLine(valueString);
         return this;
     }
     /// <inheritdoc/>
     public ICodeBuilder Insert<T>(int index, T value)
     {
-        indentHandler.AppendIndent(builder);
         builder.Insert(index, value);
         return this;
     }
@@ -133,4 +158,10 @@ public sealed class StringBuildedCodeBuilder : ICodeBuilder
     /// <inheritdoc/>
     public void Clear()
         => builder.Clear();
+    IFormatProvider EnsureFormatProvider(IFormatProvider? provider)
+    {
+        if (provider is not null)
+            return provider;
+        return CultureInfo.CurrentCulture;
+    }
 }

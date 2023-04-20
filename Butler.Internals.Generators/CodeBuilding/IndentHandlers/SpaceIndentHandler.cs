@@ -1,21 +1,30 @@
 ﻿using System.Text;
 
+using Butler.Internals.Generators.Errors;
+
 namespace Butler.Internals.Generators.CodeBuilding.IndentHandlers;
-// TESTME: Needs testing.
 /// <summary>
 /// Represents a <see cref="IIndentHandler"/> which uses spaces to indent.
 /// </summary>
 public sealed class SpaceIndentHandler : IIndentHandler
 {
-    readonly int spaces;
-    int depth;
     internal const char Space = ' ';
+    int depth;
+    readonly int spaces;
     /// <summary>
     /// Constructs a new <see cref="SpaceIndentHandler"/> with <paramref name="spaces"/> amount of spaces per indent.
     /// </summary>
-    /// <param name="spaces">The spaces to use for indent.</param>
+    /// <param name="spaces">The spaces to use for indent. Must be more than 0.</param>
+    /// <exception cref="SpacesOutOfRange">Thrown if the spaces are 0 or less.</exception>
     public SpaceIndentHandler(int spaces)
     {
+        if (spaces < 1)
+            throw new SpacesOutOfRange()
+            {
+                Given = spaces,
+                Minimum = 1,
+                Maximum = int.MaxValue
+            };
         this.spaces = spaces;
     }
     /// <inheritdoc/>
@@ -31,8 +40,9 @@ public sealed class SpaceIndentHandler : IIndentHandler
     /// <inheritdoc/>
     public void AppendIndent(StringBuilder builder)
     {
+        if (depth < 1)
+            return;
         int count = spaces * depth;
-        string indent = new(Space, count);
-        builder.Append(indent);
+        builder.Append(Space, count);
     }
 }

@@ -10,7 +10,7 @@ public interface ICodeBuilder
     /// <summary>
     /// Gets the current count of objects in the builder.
     /// </summary>
-    int MaxCapacity { get; }
+    int Count { get; }
     /// <summary>
     /// Gets or sets the <see cref="char"/> based on the give <paramref name="index"/>.
     /// </summary>
@@ -31,6 +31,13 @@ public interface ICodeBuilder
     /// <param name="value">The <typeparamref name="T"/> to append to the builder.</param>
     /// <returns><inheritdoc cref="Append(string)" path="/returns"/></returns>
     ICodeBuilder Append<T>(T value);
+    /// <summary>
+    /// Appends the <paramref name="value"/> by the specified amount.
+    /// </summary>
+    /// <param name="value">The value to append x amount.</param>
+    /// <param name="count">The amount of times to append it.</param>
+    /// <returns><inheritdoc cref="Append(string)" path="/returns"/></returns>
+    ICodeBuilder Append(char value, int count);
     /// <summary>
     /// Formats using the format <paramref name="format"/> with the object <paramref name="value"/> and appends to the builder.
     /// </summary>
